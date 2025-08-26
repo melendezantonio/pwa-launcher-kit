@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\mytools]
+@="URL:My Tools Protocol"
+"URL Protocol"=""
+
+[HKEY_CURRENT_USER\Software\Classes\mytools\shell]
+
+[HKEY_CURRENT_USER\Software\Classes\mytools\shell\open]
+
+[HKEY_CURRENT_USER\Software\Classes\mytools\shell\open\command]
+@="\"C:\\Users\\melendez\\Desktop\\pwa_launcher_kit\\launcher_helper.exe\" \"%1\""
