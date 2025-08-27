@@ -1,6 +1,6 @@
 {
-  "name": "App Launcher PWA",
-  "short_name": "Launcher",
+  "name": "ChopinPlus Dashboard App",
+  "short_name": "ChopinPlus",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
