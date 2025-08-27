@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url='https://app.powerbi.com/groups/me/reports/53d7cf89-bc32-4bc1-acb6-4d38352258dc/addd48d13bdbe8dac86c?ctid=ca7981a2-785a-463d-b82a-3db87dfc3ce6&experience=power-bi'" />
-    <title>Loading Power BI...</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI Launcher</title>
+
+  <!-- PWA manifest + theme -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="icon.png">
+
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+    }
+    .msg {
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <p>Redirecting to Power BI report...</p>
+  <div class="msg">
+    <h2>Launching Power BI...</h2>
+    <p>If nothing happens, <a id="fallback-link" href="#">click here</a>.</p>
+  </div>
+
+  <script>
+    // Register the service worker for PWA
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js")
+          .then(reg => console.log("Service Worker registered:", reg))
+          .catch(err => console.error("Service Worker error:", err));
+      });
+    }
+
+    // Redirect to Power BI
+    const reportUrl = "https://app.powerbi.com/groups/me/reports/53d7cf89-bc32-4bc1-acb6-4d38352258dc/addd48d13bdbe8dac86c?ctid=ca7981a2-785a-463d-b82a-3db87dfc3ce6&experience=power-bi";
+    document.getElementById("fallback-link").href = reportUrl;
+
+    setTimeout(() => {
+      window.location.href = reportUrl;
+    }, 1500); // slight delay so PWA hooks in before redirect
+  </script>
 </body>
 </html>
